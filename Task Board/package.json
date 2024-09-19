@@ -1,0 +1,19 @@
+{
+  "name": "task-board",
+  "version": "1.0.0",
+  "description": "Task Board",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RomerX64/DevChallenges.git"
+  },
+  "author": "Tomas Romera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RomerX64/DevChallenges/issues"
+  },
+  "homepage": "https://github.com/RomerX64/DevChallenges#readme"
+}
