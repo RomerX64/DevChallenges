@@ -4,7 +4,8 @@
   "description": "Task Board",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./backend/main.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,22 @@
   "bugs": {
     "url": "https://github.com/RomerX64/DevChallenges/issues"
   },
-  "homepage": "https://github.com/RomerX64/DevChallenges#readme"
+  "homepage": "https://github.com/RomerX64/DevChallenges#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.6.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
+    "babel-loader": "^9.2.1",
+    "nodemon": "^3.1.6",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
+  }
 }

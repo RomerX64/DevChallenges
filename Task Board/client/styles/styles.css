@@ -1,0 +1,294 @@
+.padding {
+    margin: auto;
+}
+.margen {
+    margin: auto;
+}
+.sonido-size {
+    width: 1rem;
+    margin: 0%;
+}
+.Background-color {
+    background-color: rgb(0, 0, 0);
+}
+.imagen-Portada {
+    width: 185px;
+    height: 273px;
+}
+.car-size{
+    width: 30em;
+}
+.fit-content{
+    width: fit-content;
+}
+.padding-y {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+.whidth {
+    width: 18rem;
+}
+.max-content{
+    width: max-content;
+}
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.loginpsize {
+    font-size: 0.8rem;
+}
+#carouselExampleControls{
+    margin-left: 40%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    width: 60%;
+}
+.titlado{
+    margin-inline-start: auto;
+    
+}
+
+#body{
+    background-color: rgb(252, 212, 132);
+    height: 90vh;
+    font-family: "Outfit", sans-serif;
+            font-weight: 400;
+}
+
+#main{
+    height: 100%;
+    display: flex;
+}
+#board{
+    margin-right: 3%;
+    margin-left: 3.5%;
+    margin-top: 1%;
+    width: 57%;
+    background-color: rgb(195, 227, 255);
+    border: 3px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 1rem;
+    box-shadow: 1rem 2rem 5rem black;
+}
+#tasks{
+    padding-top: 1rem;
+    margin-left: 3%;
+    margin-right: 3.5%;
+    margin-top: 1%;
+    width: 30%;
+    border: 3px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 1rem;
+    background-color: rgb(195, 227, 255);
+    box-shadow: 1rem 2rem 5rem black;
+    overflow-y: auto;
+}
+.previuwTaskConteiner{
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    margin-top: 0.2rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    height: 2rem;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 1rem;
+    display: flex;
+    position: relative; 
+    box-shadow: 0px 0px 0.4rem black; 
+}
+.previuwTaskConteiner:hover {
+    width: 95.7%;
+    box-shadow: 0px -1px 0.9rem black; 
+}
+.titlePreviuw{
+    text-align: center;
+    padding-top: 0.1rem;
+}
+.checks{
+    display: flex;
+    margin-right: 0.89rem;
+    margin-left: auto;
+    padding-top: auto;
+    padding-bottom: auto;
+    margin-top: -0.5%;
+    margin-bottom: -0.5%;
+}
+.chacksitos{
+    margin-top: 105%;
+    
+}
+.wontDo{
+    background-color: #F7D4D3;
+    margin: 3%;
+    padding-top: auto;
+    padding-bottom: auto;
+}
+.inProgres{
+    background-color: #F5D565;
+    margin: 3%;
+    padding-top: auto;
+    padding-bottom: auto;
+}
+.completed{
+    background-color:#A0ECB1;
+    margin: 3%;
+    padding-top: auto;
+    padding-bottom: auto;
+   
+}
+.pending{
+    background-color:#00000033;
+    margin: 3%;
+    padding-top: auto;
+    padding-bottom: auto;
+}
+
+.board{
+    padding: 15%;
+}
+.contenedorTile{
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    height: 2rem;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 1rem;
+    display: flex;
+    position: relative; 
+    box-shadow: 0px 0px 0.4rem black; 
+}
+.titleTaskBoard{
+    width: 90%;
+    margin-bottom: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #97A3B6;
+}
+.Mysinputs{
+    background-color: rgba(255, 255, 255, 0);   
+    
+}
+.contenedorDescripcion{
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    margin-top: 0.5rem;   
+    height: 60%;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 1rem;
+    display: flex;
+    position: relative; 
+    box-shadow: 0px 0px 0.4rem black; 
+    padding: 2%;
+}
+.TaskDescriptiom{
+    border-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: 100%;
+}
+.contenedortypeTask{
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    margin-top: 0.3rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    height: 3rem;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 1rem;
+    display: flex;
+    position: relative; 
+    box-shadow: 0px 0px 0.4rem black; 
+}
+.type{
+    margin: auto;
+    height: 2rem;
+    width: 2rem;
+    border: 1px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0 , 0.5);
+    display: flex;
+    position: relative; 
+    box-shadow: 0px 0px 0.4rem black; 
+}
+.buttonType{
+    width: 2rem;
+    background-color: rgba(255, 255, 255, 0)
+}
+.imgType{
+    width: 1.7rem;
+    height: 1.7rem;
+    margin: 0%;
+    margin-left: -20%; 
+}
+
+.contenedorStatusDelete{
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    margin-top: 0.3rem;
+    height: 7rem;
+    display: flex;
+    
+}
+.StatusBoard{
+    width: 20rem;    
+    height: 7rem;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 1rem;
+    display: flex;
+    position: relative; 
+    box-shadow: 0px 0px 0.4rem black; 
+}
+.delete{
+    height: 2rem;
+    width: 2rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 2rem;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 0.3rem;
+    display: flex;
+    position: relative; 
+    box-shadow: 0px 0px 0.4rem black; 
+}
+.statusCheck{
+    height: 2rem;
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0.2rem;
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 3rem;
+}
+.StatusBoard{
+    margin-right: 1rem;
+    margin-left: 3rem;
+    
+}
+.pendingwontDo{
+    margin-left: 1rem;
+    margin-right: 3rem;
+    
+
+}
