@@ -3,19 +3,33 @@ const User = require("../models/User")
 
 module.exports = {
     createUser: async ({userName,name,apellido,email,password}) => {
-        const newUser = await User.create({ userName, name, apellido, email, password });
-        return newUser;
+        console.log('createUser');
+
+        try {
+            const newUser = await User.create({ userName, name, apellido, email, password });
+            return newUser; 
+        } catch (error) {
+            console.error('Error al crear el usuario:', error);
+            throw new Error('Error al crear el usuario'); 
+        }
     },
 
     getMyUser: async({userName,password}) => {
+        console.log(userName);
+        
         const user = await User.findOne({userName})
-        if (!user) {return 'Usuario no encontrado'}
-        if (user.password === password) {
-            return user
-        }else {return 'Contraseña o usuario incorrecto'}
+        console.log(user);
+        
+        if (!user) {return console.error('Usuario no encontrado')}
+        if (user.password === password){
+            console.log(user.password);
+            console.log(password);
+            
+            
+        return user
+        }else {return console.error('Contraseña o usuario incorrecto')}
     },
     getUserNames: async () => {
-        console.log('service')
         const users = await User.find();
         const namesEmails = [];
         users.forEach(user => {

@@ -3,13 +3,15 @@ const taskController = require('../../controllers/taskController')
 
 const router = Router();
 
-router.get("/mystasks",taskController.mysTasks);
+router.post("/mystasks",taskController.mysTasks);
 
 router.post("/task",taskController.getTask);
-router.post("/newtask",taskController.createTask);
-router.post("/change",taskController.change);
 
-router.delete("/deleteTask",taskController.deleteTask);
+router.post("/newtask",taskController.createTask);
+
+router.put("/change",taskController.change);
+
+router.delete("/deleteTask/:id",taskController.deleteTask);
 
 
 module.exports = router

@@ -1,26 +1,32 @@
+import sacarLogin from "../login/login";
 
-const registrarse = async ({userName,password,name,apellido,email}) => {
-    const newuser = {userName,password,name,apellido,email};
+const registrarse = async (datosNewuser) => {
+
     try {
-        const res = fetch('http://localhost:3000/user/allusersnames');
-    } catch (error) {
-        return console.error(error);
+        const res = await fetch('http://localhost:3000/user/allusersnames');
+        if(res.ok){let users = await res.json()
         
+        if (users.includes(datosNewuser.userName)){ return alert('El usuario no esta disponible')};
+        if (users.includes(datosNewuser.email)){ return alert('El email ya esta registrado')};
+        if (datosNewuser.password.length < 4){return alert('La contraseña posee menos de 5 caracteres')};
+        }
+    } catch (error) {
+        return console.error(error);      
     }
-    if (res.incluides(newuser.userName)){ return console.log('El usuario no esta disponible')};
-    if (res.incluides(newuser.email)){ return console.log('El email ya esta registrado')};
-    if (password.length < 4){return console.log('La contraseña posee menos de 5 caracteres')};
-
     try {
-        const response = fetch('http://localhost:3000/user/newuser',{
-            method:'POST',
-            headers:{
-                'Content Type':'aplication/json'
+        const response = await fetch('http://localhost:3000/user/newuser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             },
-            body:JSON.stringify(newuser)
+            body: JSON.stringify(datosNewuser)
         });
-        console.log('Su usario se creo corrrectamente');
-        return board(newuser);
+        if(response.ok){
+            console.log('Su usario se creo corrrectamente '+ datosNewuser.userName);
+
+        }else{
+            return;       
+        }
     } catch (error) {
         return console.error(error);}
 }

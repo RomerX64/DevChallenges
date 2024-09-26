@@ -1,9 +1,14 @@
+import {mainBoard} from "../board/mainBoard";
 import acceder from "../users/acceder";
 import { sacarRegistrarse } from "./register";
 
 
 
-const sacarLogin = () => {
+const sacarLogin = async () => {
+    const form = document.getElementById('login')
+        form.addEventListener('click',(event) => {
+            event.preventDefault()
+        })
 
     const conteneorTotal = document.createElement('div');
         conteneorTotal.classList.add('login');
@@ -96,7 +101,6 @@ const sacarLogin = () => {
             const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
             bacceder.disabled = !allFilled; 
         };
-
         checkInputs();
 
         inputs.forEach(input => {
@@ -105,18 +109,25 @@ const sacarLogin = () => {
 
         
         bacceder.addEventListener('click', async () =>{
-                const userName =  document.getElementById('userName')
+                const userName =  document.getElementById('userName').value;
 
-                const password =  document.getElementById('password')
+                const password =  document.getElementById('Password').value;
 
-                await acceder(userName, password)
+                const logearse = {userName,password} 
+                console.log(logearse);
+
+                const user = await acceder(logearse);
+
+                if(!user){
+                    alert('El usuario o contraseña es incorrecta');
+                    const confirm = confirm('Deseas crear una cuenta?');
+                        if(confirm){return sacarRegistrarse()}
+                    return;
+                 }
                 const borrar = document.getElementById('conteneorTotal');
                     borrar.remove();
-                return board,user;
-            })
-
-
-        
+                if(user){return await mainBoard(user)}
+            })       
         const registrarseInputs = document.getElementById('botonRegistrarse');
             registrarseInputs.addEventListener('click', ()=>{
                 sacarRegistrarse();

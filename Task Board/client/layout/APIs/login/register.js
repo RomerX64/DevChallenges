@@ -111,7 +111,10 @@ const sacarRegistrarse = () => {
                 const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
                 bRegistrarse.disabled = !allFilled; 
             }
-            checkInputs();
+            checkInputs()   
+            inputs.forEach(input => {
+                input.addEventListener('input', checkInputs);
+            });
             const conteneorTotalRegistro = document.getElementById('conteneorTotal');
             
             bRegistrarse.addEventListener('click', async () => {
@@ -120,17 +123,17 @@ const sacarRegistrarse = () => {
                 const name = document.getElementById('name').value;
                 const apellido = document.getElementById('YourLastName').value;
                 const email = document.getElementById('email').value;
-                const datosNewuser = {userName,password,name,apellido,email};
-
+                const datosNewuser = {userName, password, name, apellido, email};
+                console.log(datosNewuser);
                 await registrarse(datosNewuser);
-                if (!registrarse.ok) {return console.error('No se pudo generar el usuario', error);}
-                else {conteneorTotalRegistro.remove()}
+                conteneorTotalRegistro.remove();
+                return sacarLogin();
             })
 
             const bLogearse = document.getElementById('botonLogearse');
                 bLogearse.addEventListener('click', async () => {
                     conteneorTotalRegistro.remove()
-                    sacarLogin()
+                    return sacarLogin()
                 })
 
 }

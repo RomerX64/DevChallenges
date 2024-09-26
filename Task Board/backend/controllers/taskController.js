@@ -6,32 +6,31 @@ const res = require('express/lib/response.js');
 
 
 const createTask = async (req, res ) => {
-    const user = req.user;
-    const {tile, description, type, status } = req.body;
-    const newTask = await taskService.createTask({tile, description, type, status},user);
+    const {title, description, type, status, userId} = req.body;
+    console.log('parametros' + {title, description, type, status, userId});
+    const newTask = await taskService.createTask({title, description, type, status, userId});
+    console.log('task Creada '+ newTask);
     res.status(200).json(newTask);
 }
-const getTask = async (req,res) => {
-    const user = req.user;
-    const {title} = req.body;
-    const task = await taskService.getTask({title},user);
+const getTask = async (req,res) => {  
+    const {taskId} = req.body;
+    const task = await taskService.getTask(taskId);
     res.status(200).json(task);
 }
 const mysTasks = async (req,res) => {
-    const user = req.user;
-    const tasks = await taskService.mysTasks(user);
+    const {userId} = req.body;
+    const tasks = await taskService.mysTasks(userId);
     res.status(200).json(tasks);
 }
 const deleteTask = async (req, res) => {
-    const user = req.user;
-    const {title} = req.body;
-    await taskService.deleteTask({title});
-    res.status(200).json(user.username + " se elimino su task")
+    const {userId} = req.body;
+    const { taskId } = req.params
+    await taskService.deleteTask(taskId, userId);
+    res.status(200).json('Se elimino la task')
 }
-const change = async () => {
-    const user = req.user;
-    const {newTitle, newDescription, newType, newStatus} = req.body;
-    const newTask = await taskService.change({newTitle, newDescription, newType, newStatus},user);
+const change = async (req, res) => { 
+    const {taskId, newTitle, newDescription, newType, newStatus} = req.body;
+    const newTask = await taskService.change({taskId, newTitle, newDescription, newType, newStatus});
     res.status(200).json(newTask)
 }
 

@@ -1,10 +1,12 @@
 import sacarLogin  from './APIs/login/login';
 
 
-const validacion = () => {
-
-     sacarLogin()
-    
+const validacion = async() => {
+     return await sacarLogin()
 };
 
-export {validacion};
+const Iniciar = async () =>{
+     await validacion()
+}
+
+export default Iniciar;

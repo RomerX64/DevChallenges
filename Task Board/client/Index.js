@@ -1,3 +1,4 @@
-import { validacion } from "./layout/layout";
+import Iniciar from "./layout/layout";
 
-validacion()
+
+await Iniciar()

@@ -1,63 +1,73 @@
 const Task = require("../models/Task");
-
+const User = require("../models/User")
 module.exports ={
-    createTask: async ({title, description, type, status}, user) => {
-        const newTask = await Task({title, description, type, status});
-        if(!newTask){return console.error('no se pudo crear la task')};
-        if (!user){return console.error('el usuario no esta logeado');}
+    createTask: async ({title, description, type, status, userId}) => {
         try {
-            const tasks = user.tasks;
-            await tasks.push(newTask);
-            await user.save() 
-            return console.log('La task se creo y agrego correctamente');   
+        const user = await User.findById(userId)
+        console.log('usuario: '+ user);
+        
+        if (!user){return console.error('el usuario no esta logeado');}
+
+        console.log({title, description, type, status})
+
+        const newTask = await new Task({title, description, type, status});
+        
+        console.log('task creada: '+ newTask);
+
+        console.log(user.tasks)
+        user.tasks.push(newTask._id);
+        console.log(user.tasks)
+        
+        await newTask.save();  
+        await user.save();
+
+        console.log('La task se creo y agrego correctamente')
+        return newTask;
+
         } catch (error) {
             return console.error('La task no se pudo subir al usuario'); 
         }   
     },
-    getTask: async ({title}, user) =>{
-        const tasks = await user.tasks;
-        const task = await tasks.find(task => task.title === title);
+    getTask: async (taskId) =>{
+        const task = await Task.findById(taskId)
         return task;
     },
-    mysTasks: async (user) => {
-        const tasks = await user.tasks;
-        const titles = [];
-        for(let i=0 ; i < tasks.length ; i++){
-            titles.push(tasks[i].title);
-        };
-        return titles;
+    mysTasks: async (userId) => {
+        const user = await User.findById(userId)
+        const tasks = user.tasks
+        return tasks;
     },
-    deleteTask: async ({title},user) => {
-        const tasks = await user.tasks;
-        const task = await tasks.find(task => task.title === title);
+    deleteTask: async (taskId, userId) => {
+        const user = await User.findById(userId)
+        const task = await Task.findById(taskId)
         if(!task){return console.error('no se pudo identificar Task a eliminar')}
-        const IDtaskAEliminar = task._id;
-        if(!IDtaskAEliminar){return console.error('no se pudo identificar Task a eliminar')}
         try {
-            user.tasks.pull(IDtaskAEliminar);
-            await user.save;
-            return console.log('Se borro Correctamente la Task '+ task.title +', ID: '+ IDtaskAEliminar );  
+            await Task.findByIdAndDelete(taskId)
+            await user.save();
+            return console.log('Se borro Correctamente la Task '+ task.title +', ID: '+ taskId );  
         } catch (error) {
-            return console.error('No se pudo eliminar la task '+ task.title +', ID: '+ IDtaskAEliminar);   
+            return console.error('No se pudo eliminar la task '+ task.title +', ID: '+ taskId);   
         }
     },
-    change: async({newTitle, newDescription, newType, newStatus}, user) => {
-        const tasks = await user.tasks;
-        const task = await tasks.find(task => task.title === title);
-        if(!newTitle){return console.log('El titulo no esta definido')}
-        if(!newDescription){return console.log('La descripcion no esta definido')}
-        if(!newType){return console.log('EL tipo no esta definido')}
-        if(!newStatus){return console.log('El estado no esta definido')}
-        const changes = [newTitle, newDescription, newType, newStatus];
-        const propiedades = [title, description, type, status]
-        for(let i=0; i < propiedades.length;i++){
-            task.propiedades[i] = changes[i];
-        };
+    change: async({taskId, newTitle, newDescription, newType, newStatus}) => {
+        const task = await Task.findById(taskId);
+            if (!task) {
+                console.log('Usuario o tarea no encontrados');
+                return;
+            }
         try {
-            await user.save();
+            await Task.findByIdAndUpdate(taskId,{
+                title: newTitle,
+                description: newDescription,
+                status: newType,
+                type: newStatus,
+                },
+                { new: true }
+            )
+            await task.save();
             return console.log('Los cambios se realizaron con exito')
         } catch (error) {
-            return console.log('No se pudieron realizar lo cambios')
+            return console.log('No se pudieron realizar lo cambios', error)
         }
     }
 

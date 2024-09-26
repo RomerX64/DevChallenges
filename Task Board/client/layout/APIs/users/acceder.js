@@ -1,10 +1,9 @@
 
-
-const acceder = async (userName, password) => {
+const acceder = async ({userName, password}) => {
 
     try {
 
-        const response = await fetch('tp://localhost:3000/user/myuser',{
+        const response = await fetch('http://localhost:3000/user/myuser',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', 
@@ -12,16 +11,14 @@ const acceder = async (userName, password) => {
             body: JSON.stringify({ userName, password })
         })
         if (response.ok) {
-            const user = response.json();
-            console.log('se pudo generar el usuario '+ user.userName);
-            return board(user)
+            const user = await response.json();
+            console.log('se pudo obtener el usuario '+ user.userName);
+            return user;
         }else{
-            return console.log('error al obtener el Usuario', response.statusText);
-            
+            return console.error('error al obtener el Usuario', response.statusText);         
         }
-        
     } catch (error) {
-        console.log('Error en la solicitud', error);
+        return console.error('Error en la solicitud', error);
         
     }
 };
